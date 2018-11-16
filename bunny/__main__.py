@@ -4,7 +4,7 @@ import json
 import sys
 
 parser = argparse.ArgumentParser(description='Bunny operation invocation')
-parser.add_argument('-p','--parameter',nargs=2,help='A parameter value',action='append')
+parser.add_argument('-p','--parameter',help='A parameter value',action='append')
 parser.add_argument('-c','--config',help='The bundle configuration.')
 parser.add_argument('bundle',help='The bundle.')
 parser.add_argument('operation',help='The client id for the authentication provider.')
@@ -21,8 +21,12 @@ if args.config is not None:
 
 parameters = {}
 if args.parameter is not None:
-   for name,value in args.parameter:
-      parameters[name] = value
+   for spec in args.parameter:
+      pos = spec.find('=')
+      if pos<0:
+         parameters[spec] = ''
+      else:
+         parameters[spec[0:pos]] = spec[pos+1:]
 
 response = bundle.invoke(args.operation,**parameters)
 print(json.dumps(response,indent=3))

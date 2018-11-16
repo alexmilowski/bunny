@@ -87,7 +87,7 @@ class Bundle:
 
       script = importlib.import_module(operation['script'])
 
-      result = script.main(arguments)
+      result = script.main(*arguments)
 
       return result
 
