@@ -18,7 +18,7 @@ https://github.com/alexmilowski/bunny
 
 import re
 vdir = __file__[0:__file__.rfind('/')]+'/' if __file__.rfind('/')>=0 else ''
-with open(vdir+'pyox/__init__.py', 'rt') as vfile:
+with open(vdir+'bunny/__init__.py', 'rt') as vfile:
    verstrline = vfile.read()
    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
    mo = re.search(VSRE, verstrline, re.M)
