@@ -29,4 +29,5 @@ if args.parameter is not None:
          parameters[spec[0:pos]] = spec[pos+1:]
 
 response = bundle.invoke(args.operation,**parameters)
-print(json.dumps(response,indent=3))
+if response is not None:
+   print(json.dumps(response,indent=3))
