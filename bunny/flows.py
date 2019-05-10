@@ -62,7 +62,8 @@ class Bundle:
       if self.configuration is not None:
          values = self.configuration.get('values')
          if values is not None:
-            data = {**data, **values}
+            # Allow data to override values
+            data = { **values, **data }
 
       arguments = []
 
