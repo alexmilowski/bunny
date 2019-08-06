@@ -30,4 +30,4 @@ if args.parameter is not None:
 
 response = bundle.invoke(args.operation,**parameters)
 if response is not None:
-   print(json.dumps(response,indent=3))
+   sys.stderr.write(json.dumps(response,indent=3))
